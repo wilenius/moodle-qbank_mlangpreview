@@ -1,6 +1,8 @@
 # Moodle question bank multi language preview
 
-This plugin adds the convenience of easily selecting other languages when previewing quiz questions. There will be no effect if a quesiton text does not contain any language tags. It will work from anywhere a question can be previewed and has no settings option. it can be enabled and disabled from
+This plugin adds the convenience of easily selecting other languages when previewing quiz questions. There will be no effect if a question text does not contain any language tags. It will work from anywhere a question can be previewed and has no settings option. it can be enabled and disabled from /admin/settings.php?section=manageqbanks
+
+![quiz question preview with languages dropdown](./docs/images/mlang_preview.png)
 
 It supports three types of language tags and associated filters
 
@@ -8,7 +10,7 @@ It supports three types of language tags and associated filters
 * Mlang2
 * STACK
 
-It makes no changes to core Moodle and it uses the callbacks api. When  quiz question is previewed it makes a database query to search through the quesiton text. If it finds any one of three types of language tags it will create a new dropdown with a list of the languages that are available in the question according to the tags.
+It makes no changes to core Moodle and it uses the callbacks api. When  quiz question is previewed it makes a database query to search through the question text. If it finds any one of three types of language tags it will create a new dropdown with a list of the languages that are available in the question according to the tags.
 
 When one of the languages is selected. the URL of the preview screen will be updated to include the language code, e.g. &lang=de would be added if German was selected. The current users preferred language is always added to the list of languages.
 
