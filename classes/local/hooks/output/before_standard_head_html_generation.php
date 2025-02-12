@@ -77,12 +77,11 @@ class before_standard_head_html_generation {
     }
 
     private static function extract_language_tags(string $text): array {
-        $patterns = [
-            '/\[\[lang\s+code=[\'"]([a-z]{2})[\'"]]\]/i',  // STACK format
-            '/\{mlang\s+([a-z]{2})\}/i',                   // MLang2 format
-            '/<span\s+lang="([a-z]{2})"\s+class="multilang">/i'  // Core Moodle format
-        ];
-
+	$patterns = [
+		'/\[\[lang\s+code=[\'"]([a-z]{2}(?:_[a-z]{2})?)[\'"]]\]/i',  // STACK format
+		'/\{mlang\s+([a-z]{2}(?:_[a-z]{2})?)\}/i',                   // MLang2 format
+		'/<span\s+(?:lang="([a-z]{2}(?:_[a-z]{2})?)"\s+class="multilang"|class="multilang"\s+lang="([a-z]{2}(?:_[a-z]{2})?)")>/i'  // Core Moodle format
+	];
         $languages = [];
         foreach ($patterns as $pattern) {
             if (preg_match_all($pattern, $text, $currentMatches)) {
